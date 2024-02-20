@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import axios from 'axios';
+
+import Home from './components/Home'; // 'Home' 컴포넌트가 정의된 파일 경로
+import Login from './components/Login';
+import SignupForm from './components/SignupForm'; // 'Login' 컴포넌트가 정의된 파일 경로
+
+axios.defaults.baseURL="http://localhost:8080"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signupform" element={<SignupForm />} />
+      </Routes>
+    </Router>
   );
 }
 
